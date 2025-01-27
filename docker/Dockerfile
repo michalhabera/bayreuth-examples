@@ -20,8 +20,9 @@ RUN git clone --recursive https://gitlab.kitware.com/vtk/vtk.git -b ${VTK_VERSIO
 
 RUN cd vtk/build &&\
     python setup.py bdist_wheel &&\
-    pip install dist/*.whl &&\
-    rm -rf vtk/
+    cd .. &&\
+    pip install build/dist/*.whl &&\
+    rm -rf /home/vtk
 
 ARG PYVISTA_VERSION=0.44.1
-RUN pip install --no-cache-dir pyvista[trame]==${PYVISTA_VERSION}
+RUN pip install --no-cache-dir pyvista==${PYVISTA_VERSION} trame -v
