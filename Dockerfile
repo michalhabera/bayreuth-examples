@@ -1,4 +1,4 @@
-FROM mhabera/fenicsx-examples:latest
+FROM mhabera/bayreuth-examples:latest
 
 ARG NB_USER=jupyter
 ARG NB_UID=1000
