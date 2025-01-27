@@ -1,6 +1,6 @@
 FROM mhabera/fenicsx-examples:latest
 
-ARG NB_USER=jovyan
+ARG NB_USER=jupyter
 ARG NB_UID=1000
 
 RUN id -nu ${NB_UID} && userdel --force $(id -nu ${NB_UID}) || true; \
