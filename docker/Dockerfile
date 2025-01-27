@@ -16,13 +16,12 @@ WORKDIR /home
 RUN git clone --recursive https://gitlab.kitware.com/vtk/vtk.git -b ${VTK_VERSION} &&\
     cd vtk &&\
     cmake -GNinja -DVTK_WHEEL_BUILD=ON -DVTK_WRAP_PYTHON=ON -DVTK_GROUP_ENABLE_Web=WANT -B build -S . &&\
-    cmake --build build/
-
-RUN cd vtk/build &&\
+    cmake --build build/ &&\
+    cd build/ &&\
     python setup.py bdist_wheel &&\
     cd .. &&\
     pip install build/dist/*.whl &&\
     rm -rf /home/vtk
 
 ARG PYVISTA_VERSION=0.44.1
-RUN pip install --no-cache-dir pyvista==${PYVISTA_VERSION} trame -v
+RUN pip install --no-cache-dir pyvista[jupyter]==${PYVISTA_VERSION} -v
