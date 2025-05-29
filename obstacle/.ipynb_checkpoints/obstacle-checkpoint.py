@@ -50,6 +50,7 @@ gmsh.model.addPhysicalGroup(2, [1], tag=1)
 gmsh.model.addPhysicalGroup(1, [1, 2, 3, 4, 5, 6, 7, 8], tag=2)
 
 gmsh.model.mesh.generate()
+gmsh.finalize()
 
 # +
 import dolfinx

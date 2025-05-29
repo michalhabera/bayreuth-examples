@@ -53,6 +53,7 @@ gmsh.model.addPhysicalGroup(3, [1], 1)
 gmsh.model.addPhysicalGroup(2, [1], 2)
 gmsh.model.addPhysicalGroup(2, [4], 3)
 gmsh.model.mesh.generate()
+gmsh.finalize()
 
 
 # +
@@ -153,7 +154,7 @@ ksp.setFromOptions()
 dolfinx.log.set_log_level(dolfinx.log.LogLevel.WARNING)
 for i in range(20):
     n, converged = solver.solve(u0)
-    print(f"Number of iterations: {n}")
+    print(f"Number of Newton iterations: {n}")
     bc1.g.value[2] += 1
 
 # +
